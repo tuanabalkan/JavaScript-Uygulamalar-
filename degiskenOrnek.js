@@ -1,0 +1,11 @@
+var ad="Efe";
+console.log("Öğrenci:" + ad);
+let okul;
+console.log(okul);
+okul="Gökkuşağı Koleji";
+console.log("Okul:" + okul);
+let program="Sayısal";
+program="Sözel";
+console.log("Program:" + program);
+let sifre="deneme";
+console.log("sifre:" + sifre);
