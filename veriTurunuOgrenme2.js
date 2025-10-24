@@ -1,0 +1,9 @@
+let sayi="15";
+console.log(sayi,"değeri: ",typeof(sayi));
+let sayi1=parseInt(sayi);
+console.log(sayi1,"değeri: ",typeof(sayi1));
+let sayi2=11.5;
+console.log(sayi2,"değeri: ",typeof(sayi2));
+let sayi3=55;
+let sayi4=sayi3.toString();
+console.log(sayi4,"değeri: ",typeof(sayi4));
