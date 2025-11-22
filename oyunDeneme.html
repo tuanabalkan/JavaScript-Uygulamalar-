@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Kalp ve Mini Oje Oyunları</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #ffd6d6; color: #990000; padding: 20px;">
+
+<!-- Kalp Sistemi -->
+<h1>💖 Hoş Geldin!</h1>
+<p>
+Başlangıçta sana kalpler vermek istiyoruz. 🎀<br>
+Oyunun her aşamasını tamamladığında kalplerini biriktireceksin.
+</p>
+
+<p>Aşağıdakilerden hangilerini yaptığını işaretle:</p>
+
+<form id="heartForm">
+  <input type="checkbox" id="manicur" value="100"> Manikür sayfasını okudum<br>
+  <input type="checkbox" id="pedicur" value="100"> Pedikür sayfasını okudum<br>
+  <input type="checkbox" id="hakkimizda" value="100"> Hakkımızda kısmına baktım<br>
+  <input type="checkbox" id="sss" value="100"> Sıkça sorulan sorular kısmını okudum<br>
+  <input type="checkbox" id="oje" value="100"> Oje nasıl sürülür kısmını inceledim<br><br>
+  <button type="button" onclick="biriktirKalpler()">Kalplerimi Biriktir 💖</button>
+</form>
+
+<p id="sonuc" style="margin-top:20px; font-weight:bold;"></p>
+
+<hr style="margin:40px 0; border-color:#990000;">
+
+<!-- Birinci Mini Oyun -->
+<h2>🎨 Birinci Oyun: Manikür Aşamasını Tahmin Et</h2>
+<p>Bu manikürün <b>___</b> aşamasıdır.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/joF7t6ACIyU?si=V4EKi8Ps_E9l-5qP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<input type="text" id="cevap1" placeholder="Boşluğu doldur...">
+<button type="button" onclick="kontrolOyun1()">Cevabı Kontrol Et</button>
+
+<hr style="margin:40px 0; border-color:#990000;">
+
+<!-- İkinci Mini Oyun -->
+<h2> İkinci Oyun: French Oje Seçimi</h2>
+<p>Kısa tırnağa yakışan en güzel nail art: <b>French</b></p>
+<p>Bu fotoğraflardan hangisi French ojedir? Tıkla!</p>
+
+<div style="display:flex; gap:20px; margin-top:15px;">
+  <img src="foto2.png" alt="Oje 1" style="width:150px; cursor:pointer;" onclick="kontrolOyun2(this)">
+  <img src="foto1.png" alt="Oje 2" style="width:150px; cursor:pointer;" onclick="kontrolOyun2(this)">
+  <img src="foto3.png" alt="Oje 3" style="width:150px; cursor:pointer;" onclick="kontrolOyun2(this)">
+</div>
+
+<script>
+// Kalp sistemi
+function biriktirKalpler() {
+    let toplamKalp = 0;
+    let checkboxes = document.querySelectorAll("#heartForm input[type='checkbox']");
+    checkboxes.forEach(function(box) {
+        if(box.checked) {
+            toplamKalp += Number(box.value);
+        }
+    });
+
+    let mesaj = `Biriktirdiğin kalp sayısı: ${toplamKalp} <br>`;
+    mesaj += "Kalplerini daha çok biriktirmek istiyorsan, işaretlemediğin kutucukları da yap!";
+    document.getElementById("sonuc").innerHTML = mesaj;
+
+    alert(`Tebrikler! Şu anda ${toplamKalp} kalbin var `);
+}
+
+// Birinci oyun
+function kontrolOyun1() {
+    let dogruCevap = "kütikül kesme"; // doğru cevap
+    let kullaniciCevap = document.getElementById("cevap1").value.trim().toLowerCase();
+
+    if(kullaniciCevap === dogruCevap.toLowerCase()) {
+        alert("Doğru! 🎉");
+    } else {
+        alert("Yanlış, tekrar dene ");
+    }
+}
+
+// İkinci oyun
+function kontrolOyun2(img) {
+    // Örnek: foto3.png doğru olan
+    if(img.src.includes("foto1.png")) {
+        alert("Doğru! 🎉");
+    } else {
+        alert("Yanlış, tekrar dene ");
+    }
+}
+</script>
+
+</body>
+</html>
