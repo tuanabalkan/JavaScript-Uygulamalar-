@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<title>Tırnak Eğitimi Sitesi</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffd6e8;
+    text-align: center;
+}
+table#girisTablo {
+    margin: 100px auto;
+    border-collapse: collapse;
+    background: #ffb3d9;
+    border: 2px solid #ff80bf;
+    border-radius: 10px;
+    padding: 20px;
+}
+#girisTablo td {
+    padding: 8px 10px;
+}
+input, button {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ff80bf;
+}
+button {
+    background: #ff66b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+#anaSayfa h1, #anaSayfa p {
+    color: #cc3385;
+}
+#menuTablo {
+    margin:20px auto; 
+    border-collapse: collapse; 
+    background:#ffd6e8; 
+    border:2px solid #ff99cc;
+    text-align: center;
+}
+#menuTablo td {
+    padding: 0 20px; /* Linkler arası boşluk */
+}
+#menuTablo a {
+    text-decoration: none;
+    color: #cc3385;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<!-- Giriş Sayfası -->
+<div id="girisSayfasi">
+    <table id="girisTablo">
+        <tr>
+            <td colspan="2"><h2>Giriş Yap</h2></td>
+        </tr>
+        <tr>
+            <td>Kullanıcı adı:</td>
+            <td><input id="kullanici" type="text" placeholder="Kullanıcı adı" /></td>
+        </tr>
+        <tr>
+            <td>Şifre:</td>
+            <td><input id="sifre" type="password" placeholder="Şifre" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="girisYap()">Giriş</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><h3>Kaydol</h3></td>
+        </tr>
+        <tr>
+            <td>Yeni kullanıcı adı:</td>
+            <td><input id="kayitKullanici" type="text" placeholder="Yeni kullanıcı adı" /></td>
+        </tr>
+        <tr>
+            <td>Yeni şifre:</td>
+            <td><input id="kayitSifre" type="password" placeholder="Yeni şifre" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="kayitOl()">Kaydol</button></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Ana Sayfa -->
+<div id="anaSayfa" style="display:none; background:#ffe6f2; min-height:100vh; padding:20px;">
+    <!-- Menü tablosu -->
+    <table id="menuTablo">
+        <tr>
+            <td><a href="oje.html">Oje Sürmeyi Öğren</a></td>
+            <td><a href="manikur.html">Manikür – Pedikür</a></td>
+            <td><a href="oyun.html">Tırnak Oyunu</a></td>
+            <td><a href="sss.html">S.S.S.</a></td>
+            <td><a href="hakkimizda.html">Hakkımızda</a></td>
+        </tr>
+    </table>
+
+    <h1>Hoş geldin güzelim 💖</h1>
+    <p>Pastel ve tatlı tırnak eğitim sitemize giriş yaptın! Üstteki menüden devam edebilirsin.</p>
+</div>
+
+<script>
+let kullanicilar = [];
+
+function kayitOl() {
+    let ad = document.getElementById("kayitKullanici").value;
+    let sif = document.getElementById("kayitSifre").value;
+
+    if(/[çğıöşüÇĞİÖŞÜ]/.test(ad)){
+        alert("Kullanıcı adında Türkçe karakter olamaz 😅");
+        return;
+    }
+    if(sif.length < 8){
+        alert("Şifre en az 8 karakter olmalı 🔒");
+        return;
+    }
+    if(ad && sif){
+        kullanicilar.push({ad, sifre: sif});
+        alert("Kayıt başarılı 💖");
+    } else {
+        alert("Alanları boş bırakma ✨");
+    }
+}
+
+function girisYap() {
+    let ad = document.getElementById("kullanici").value;
+    let sif = document.getElementById("sifre").value;
+
+    for(let i=0; i<kullanicilar.length; i++){
+        if(kullanicilar[i].ad === ad && kullanicilar[i].sifre === sif){
+            document.getElementById("girisSayfasi").style.display="none";
+            document.getElementById("anaSayfa").style.display="block";
+            return;
+        }
+    }
+    alert("Hatalı giriş 🥲");
+}
+</script>
+
+</body>
+</html>

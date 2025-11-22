@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Oje Uygulama Rehberi</title>
+<style>
+  body {
+    background-color: #fff9c4;
+    color: #b38f00;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  h1 { text-align:center; margin-bottom:40px; }
+  h2 { margin-top:30px; font-size:1.4em; }
+  p { margin-left:15px; margin-bottom:20px; }
+  hr { border:0; height:3px; background-color:#b38f00; margin:30px 0; }
+  table { width:100%; border-collapse:collapse; margin-bottom:30px; }
+  table, th, td { border:1px solid #b38f00; }
+  th, td { padding:10px; text-align:left; }
+  .btn { display:block; margin:20px auto; padding:10px 20px; background-color:#b38f00; color:white; border:none; cursor:pointer; border-radius:5px; }
+  .progress-container { width:100%; background-color:#ffe082; border:1px solid #b38f00; border-radius:5px; margin-bottom:20px; height:25px; }
+  label { display:block; margin-bottom:10px; }
+  button.cevapBtn { margin-left:10px; padding:5px 15px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<h1>Oje Uygulama Rehberi</h1>
+
+<h2>1. Hazırlık</h2>
+<p>El ve tırnak hijyeni: Eller yıkanmalı ve tırnaklar temizlenmelidir.<br>
+Tırnak yüzeyinin hazırlanması: Tırnaklar düzleştirilmeli ve hafifçe matlaştırılmalıdır.<br>
+Kütikül kontrolü: Kütiküller geri itilerek tırnak yüzeyi tamamen açılmalıdır.</p>
+<hr>
+
+<h2>2. Baz Kat Uygulaması</h2>
+<p>Baz kat, tırnağı korur ve ojenin daha uzun süre dayanmasını sağlar.<br>
+İnce bir tabaka halinde uygulanmalıdır; kalın uygulamalar kabarma veya çatlamaya yol açabilir.<br>
+Baz kat kuruduktan sonra renk katına geçilmelidir.</p>
+<hr>
+
+<h2>3. Renk Uygulaması</h2>
+<p>İlk kat: İnce bir tabaka oje sürün, tırnağın merkezinden uçlara doğru fırçalayın.<br>
+Kuruma süresi: Her katın tam olarak kurumasını bekleyin.<br>
+İkinci kat: Gerekirse renk yoğunluğunu artırmak için ikinci ince kat uygulanabilir.</p>
+<hr>
+
+<h2>4. Kenar ve Uç Kontrolü</h2>
+<p>Tırnak ucuna ve yan kısımlara dikkat edin, ojeyi uçtan hafifçe kaplayın.<br>
+Fırça çok fazla ürün taşımamalı; aksi halde taşma ve kabarma riski artar.</p>
+<hr>
+
+<h2>5. Üst Kat (Top Coat) Uygulaması</h2>
+<p>Top coat, ojenin parlaklığını ve dayanıklılığını artırır.<br>
+Tırnak yüzeyine eşit ve ince bir tabaka halinde uygulanmalıdır.<br>
+Kuruma süresi boyunca ellerin temas etmemesine özen gösterilmelidir.</p>
+<hr>
+
+<h2>6. Temizlik ve Son Bakım</h2>
+<p>Eğer ojeler tırnak kenarlarına veya kütikül üzerine bulaştıysa, asetonsuz temizleyici veya ince fırça ile nazikçe temizlenmelidir.<br>
+Kuruduktan sonra tırnak kenarlarına ve kütiküllere nemlendirici yağ uygulanabilir.</p>
+<hr>
+
+<h2>7. Ek Öneriler</h2>
+<p>Tırnakların altına ve üstüne kalın tabaka sürmekten kaçının.<br>
+Günlük kullanım için tırnakları düzenli olarak nemlendirin.<br>
+Uzun süreli ojeler veya kalıcı jeller kullanılıyorsa, uygulama ve çıkarma sırasında tırnak sağlığına dikkat edin.</p>
+<hr>
+
+<h2>Sık Yapılan Hatalar ve Çözümleri</h2>
+<table>
+  <tr>
+    <th>Hata</th>
+    <th>Sonuç</th>
+    <th>Çözüm</th>
+  </tr>
+  <tr>
+    <td>Oje kütikül veya cilde bulaşır</td>
+    <td>Lifting (kabarma) ve düzensiz görünüm</td>
+    <td>Kürlenmeden önce hemen temizleyin; kuruduysa nazikçe törpüleyip düzeltin</td>
+  </tr>
+  <tr>
+    <td>Çok kalın kat uygulanması</td>
+    <td>Kabarma, geç kuruma</td>
+    <td>İnce katlar halinde uygulayın; her katın kurumasını bekleyin</td>
+  </tr>
+  <tr>
+    <td>Tırnak ucuna yeterince oje gitmemesi</td>
+    <td>Uç kısımlarda hızlı aşınma</td>
+    <td>Uçtan hafifçe kaplama yapın, tırnağın tamamına eşit uygulayın</td>
+  </tr>
+  <tr>
+    <td>Top coat uygulanmaması</td>
+    <td>Renk solması ve kısa ömürlü kullanım</td>
+    <td>Her zaman ince bir top coat uygulayın ve kurumasını bekleyin</td>
+  </tr>
+  <tr>
+    <td>Kuruma süresi beklenmemesi</td>
+    <td>Çizilme, lekelenme</td>
+    <td>Her katın tamamen kurumasını sağlayın; gerekirse 2–3 dakika ekstra bekleyin</td>
+  </tr>
+</table>
+<hr>
+
+<h2>Mini Bilgi Testi</h2>
+<div class="progress-container">
+  <progress id="ilerlemeBar" max="100" value="0" style="width:100%; height:25px;"></progress>
+</div>
+
+<div id="sorular">
+  <p>Soru 1: Baz kat tırnağı korur?</p>
+  <button class="cevapBtn" id="cevap1Evet">Evet</button>
+  <button class="cevapBtn" id="cevap1Hayir">Hayır</button>
+
+  <p>Soru 2: Top coat parlaklık sağlar?</p>
+  <button class="cevapBtn" id="cevap2Evet">Evet</button>
+  <button class="cevapBtn" id="cevap2Hayir">Hayır</button>
+
+  <p>Soru 3: Kalın kat uygulamak iyidir?</p>
+  <button class="cevapBtn" id="cevap3Evet">Evet</button>
+  <button class="cevapBtn" id="cevap3Hayir">Hayır</button>
+
+  <p>Soru 4: Kuruma süresi önemlidir?</p>
+  <button class="cevapBtn" id="cevap4Evet">Evet</button>
+  <button class="cevapBtn" id="cevap4Hayir">Hayır</button>
+
+  <p>Soru 5: Tırnak kenarı temizliği gerekli mi?</p>
+  <button class="cevapBtn" id="cevap5Evet">Evet</button>
+  <button class="cevapBtn" id="cevap5Hayir">Hayır</button>
+</div>
+
+<script>
+let barDoluluk = 0;
+let dolmaMiktari = 20;
+
+function dogruCevap() {
+    barDoluluk += dolmaMiktari;
+    if(barDoluluk > 100) barDoluluk = 100;
+    document.getElementById("ilerlemeBar").value = barDoluluk;
+    if(barDoluluk === 100){
+        alert("Tebrikler! Tüm bar doldu 🎉");
+    }
+}
+
+for(let i=1;i<=5;i++){
+    switch(i){
+        case 1:
+            document.getElementById("cevap1Evet").onclick = function(){ dogruCevap(); };
+            break;
+        case 2:
+            document.getElementById("cevap2Evet").onclick = function(){ dogruCevap(); };
+            break;
+        case 3:
+            document.getElementById("cevap3Hayir").onclick = function(){ dogruCevap(); };
+            break;
+        case 4:
+            document.getElementById("cevap4Evet").onclick = function(){ dogruCevap(); };
+            break;
+        case 5:
+            document.getElementById("cevap5Evet").onclick = function(){ dogruCevap(); };
+            break;
+    }
+}
+</script>
+
+</body>
+</html>

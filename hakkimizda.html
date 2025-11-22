@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hakkımızda - Tırnak Eğitimi Platformu</title>
+  <style>
+    body {
+      background-color: #e6d0f3; /* Pastel lila */
+      color: #5a2a83; /* Koyu lila */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 1.4em;
+    }
+
+    p {
+      margin-left: 15px;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border: 0;
+      height: 3px;
+      background-color: #5a2a83;
+      margin: 30px 0;
+    }
+
+    .btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #5a2a83;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Hakkımızda</h1>
+
+<h2 id="paragraf1">Kuruluş Amacımız</h2>
+<p>Kuruluş amacımız, tırnak bakım ve protez tırnak uygulamalarını bilimsel temellere dayanan, güvenli ve profesyonel bir eğitim yaklaşımıyla öğretmektir. Sitemizde sunulan tüm içerikler; uluslararası tırnak standartları, dermatolojik kılavuzlar ve sektörün önde gelen uzmanlarının uygulama prensipleri dikkate alınarak hazırlanır.</p>
+<hr>
+
+<h2 id="paragraf2">Eğitim Materyalleri</h2>
+<p>Eğitim materyallerimiz; CDC ve OSHA gibi kurumların hijyen ve sağlık yönergeleri, profesyonel tırnak sanatçıları tarafından kullanılan teknik tanımlar ve güncel uygulama yöntemleri temel alınarak düzenlenmiştir. Bu sayede yalnızca uygulama adımlarını değil, her tekniğin arkasındaki sağlıksal ve yapısal gerekçeleri de öğrenmeniz hedeflenir.</p>
+<hr>
+
+<h2 id="paragraf3">Platform Yapısı</h2>
+<p>Platformumuz, kullanıcıların hem teorik hem de pratik becerilerini geliştirebilmesi için açık, anlaşılır ve sistematik bir eğitim yapısı sunar. Sanal pratik modülleri, uygulama becerilerini kontrollü bir öğrenme ortamında geliştirebilmek amacıyla tasarlanmıştır.</p>
+<hr>
+
+<h2 id="paragraf4">Amacımız</h2>
+<p>Amacımız, sektöre adım atmak isteyen ya da mevcut bilgi ve becerilerini geliştirmeyi hedefleyen kullanıcılara; güvenli, bilimsel ve profesyonel bir kaynak sağlamaktır. Tüm eğitim sürecinde hijyen, sağlık, doğru ürün kullanımı ve sorunsuz uygulama prensipleri temel önceliğimizdir.</p>
+<hr>
+
+<h2 id="paragraf5">Felsefemiz</h2>
+<p>Bu platform, tırnak sanatının yalnızca estetik bir işlem olmadığını; teknik bilgi, hijyen bilinci ve profesyonel yaklaşım gerektiren kapsamlı bir alan olduğunu benimseyen herkes için hazırlanmıştır.</p>
+<hr>
+
+<button id="btnJs" class="btn">Platform Hakkında Daha Fazla</button>
+
+<script>
+  // Hoşgeldin mesajı
+  let kullaniciAdi = prompt("Adın ne güzelim?");
+  alert("Hoşgeldin " + (kullaniciAdi ? kullaniciAdi : "") + "! 💅");
+
+  // Kullanıcının ilgilenmek istediği konuları gösterelim
+  document.getElementById("btnJs").onclick = function() {
+    let secim;
+    do {
+      secim = prompt("Ne öğrenmek istersiniz?\n1: Kuruluş Amacı\n2: Eğitim Materyalleri\n3: Platform Yapısı\n4: Amacımız\n5: Felsefemiz\nÇıkmak için 'çıkış' yazın.").toLowerCase();
+
+      switch(secim) {
+        case "1":
+          alert("Kuruluş amacımız, tırnak bakım ve protez tırnak uygulamalarını bilimsel temellere dayanan, güvenli ve profesyonel bir eğitim yaklaşımıyla öğretmektir.");
+          break;
+        case "2":
+          alert("Eğitim materyallerimiz; CDC ve OSHA gibi kurumların hijyen ve sağlık yönergeleri, profesyonel tırnak sanatçıları tarafından kullanılan teknik tanımlar ve güncel uygulama yöntemleri temel alınarak düzenlenmiştir.");
+          break;
+        case "3":
+          alert("Platformumuz, kullanıcıların hem teorik hem de pratik becerilerini geliştirebilmesi için açık, anlaşılır ve sistematik bir eğitim yapısı sunar. Sanal pratik modülleri mevcuttur.");
+          break;
+        case "4":
+          alert("Amacımız, sektöre adım atmak isteyen ya da mevcut bilgi ve becerilerini geliştirmeyi hedefleyen kullanıcılara güvenli, bilimsel ve profesyonel bir kaynak sağlamaktır.");
+          break;
+        case "5":
+          alert("Platform, tırnak sanatının yalnızca estetik bir işlem olmadığını; teknik bilgi, hijyen bilinci ve profesyonel yaklaşım gerektiren bir alan olduğunu benimseyen herkes için hazırlanmıştır.");
+          break;
+        case "çıkış":
+          alert("Teşekkürler! 💖 Platform hakkında bilgi almak için tekrar bekleriz.");
+          break;
+        default:
+          alert("Lütfen 1-5 arası bir sayı veya 'çıkış' yazın 😅");
+      }
+
+    } while(secim !== "çıkış");
+  }
+
+  // For ve console örneği
+  let mesajlar = ["Platform güvenli", "Bilgiler güncel", "Eğitimler ücretsiz"];
+  console.log("Platform Hakkında Öneriler:");
+  for(let i=0; i<mesajlar.length; i++){
+    console.log("- " + mesajlar[i]);
+  }
+</script>
+
+</body>
+</html>
