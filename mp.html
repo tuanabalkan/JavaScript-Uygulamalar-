@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Manikür & Pedikür Rehberi</title>
+<style>
+    body { background:#d5f5d1; font-family: Arial; padding:20px; color:#145214; }
+    table { width:100%; margin-bottom:20px; border-collapse:collapse; border:2px solid #145214; }
+    td { padding:10px; border:2px solid #145214; }
+    input[type="text"] { width: 80%; padding:5px; margin-top:5px; }
+    button { padding:5px 10px; cursor:pointer; background:#67a667; color:white; border:none; border-radius:5px; margin-top:5px; }
+</style>
+</head>
+<body>
+
+<h1>Manikür & Pedikür Rehberi</h1>
+
+<table border="2">
+<tr><td><b>1. Manikür Nedir?</b></td></tr>
+<tr><td>Manikür; el ve tırnak sağlığını korumayı, tırnakları şekillendirip temizlemeyi ve ellerin genel görünümünü iyileştirmeyi amaçlayan bir bakım işlemidir. Doğru tekniklerle yapıldığında tırnak kırılması, katmanlaşma ve kütikül problemlerini azaltır.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>2. Manikürün Amacı</b></td></tr>
+<tr><td>Tırnağın doğal yapısını korumak, ölü deriyi kontrol altına almak, hijyeni sağlamak, oje uygulamalarının düzgün tutmasını sağlamak ve el dokusunu nemli tutmaktır.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>3. Manikür Aşamaları</b></td></tr>
+<tr><td>1. El temizliği – Eller yıkanır ve dezenfekte edilir.<br>
+2. Tırnak analizi – Kırık, katmanlı, çatlak bölgeler incelenir.<br>
+3. Tırnak kısaltma – Tırnaklar istenen uzunluğa uygun kesilir.<br>
+4. Törpüleme – Tırnak şekli tek yönde oluşturulur.<br>
+5. Kütikül yumuşatma – Kütikül remover uygulanır.<br>
+6. Kütikül işlemi – Fazlalıklar temizlenir.<br>
+7. Buffing – Tırnak yüzeyi hafifçe pürüzsüzleştirilir.<br>
+8. Nemlendirme ve masaj – Kısa masaj yapılır.<br>
+9. İsteğe bağlı oje uygulaması – Baz, renk ve top coat uygulanır.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>4. Pedikür Nedir?</b></td></tr>
+<tr><td>Ayak tırnaklarını düzenleyen, sertleşmiş bölgeleri yumuşatan ve ayak hijyenini sağlayan bakım işlemidir.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>5. Pedikürün Amacı</b></td></tr>
+<tr><td>Ölü deriyi uzaklaştırmak, tırnak batmasını önlemek, dolaşımı artırmak ve ayak derisini sağlıklı tutmaktır.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>6. Pedikür Aşamaları</b></td></tr>
+<tr><td>1. Ayak banyosu<br>
+2. Tırnak kesimi<br>
+3. Törpüleme<br>
+4. Kütikül temizliği<br>
+5. Topuk ve sert bölgelerin işlenmesi<br>
+6. Peeling (isteğe bağlı)<br>
+7. Masaj ve nemlendirme<br>
+8. Oje veya bakım uygulaması</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>7. Hijyen Kuralları</b></td></tr>
+<tr><td>Metal aletler steril edilmeli, tek kullanımlık ürünler tercih edilmeli, enfeksiyon varsa işlem yapılmamalıdır. Hijyen kurallarına uymak mantar, bakteri ve tırnak hasarını önler.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>8. Evde Manikür & Pedikür</b></td></tr>
+<tr><td>Törpüleme tek yönde yapılmalı, kütiküller zorlanmamalı, tırnaklar düz kesilmeli, ürünler temiz olmalıdır. Bu adımlar hem sağlığı korur hem de düzgün sonuç sağlar.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>9. Hangi Sıklıkla?</b></td></tr>
+<tr><td>Manikür: Haftada 1 kez hafif bakım, 2–3 haftada bir tam bakım.<br>Pedikür: 3–4 haftada bir yapılmalıdır.</td></tr>
+</table>
+
+<table border="2">
+<tr><td><b>10. Faydaları</b></td></tr>
+<tr><td>Tırnak kırılmalarını azaltır, el ve ayak görünümünü iyileştirir, dolaşımı artırır, ölü deriyi azaltır, oje kalıcılığını güçlendirir, ayak sağlığını destekler.</td></tr>
+</table>
+
+<h2>Soru:</h2>
+<p>Manikür sırasında ilk adım nedir?</p>
+<input type="text" id="cevapKutusu" placeholder="Cevabınızı yazın...">
+<button onclick="cevabiKontrolEt()">Cevapla</button>
+
+<script>
+function cevabiKontrolEt(){
+    let dogruCevap = "el temizliği";
+    let kullaniciCevap = document.getElementById("cevapKutusu").value.trim().toLowerCase();
+    if(kullaniciCevap === ""){
+        alert("Lütfen bir cevap yazınız!");
+    } else if(kullaniciCevap.includes(dogruCevap)){
+        alert("Doğru! Tebrikler 💚");
+    } else {
+        alert("Yanlış, tekrar deneyin 😅");
+    }
+}
+</script>
+
+</body>
+</html>

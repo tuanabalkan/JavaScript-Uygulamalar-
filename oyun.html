@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Kalp Biriktirme Oyunu</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #ffd6d6; color: #990000; padding: 20px;">
+
+<h1>💖 Hoş Geldin!</h1>
+
+<p>Bu Kısmın amacı; sizlere öğrenirken keyif vermek<br>
+için hazırladığımız mini oyun bölümü! Buradaki<br>
+oyunları tamamladıkça sana <b>kalpler</b> vereceğiz.<br>
+Oyunun her aşamasını tamamladığında kalplerini biriktireceksin.<br> 
+Biriktirdiğin kalpler ilerde sana lazım olacak!<br>
+Başlangıçta sana kalpler vermek istiyoruz. 🎀<br>
+</p>
+
+<p>Aşağıdakilerden hangilerini yaptığını işaretle:</p>
+
+<form id="heartForm">
+  <input type="checkbox" id="manicur" value="100"> Manikür sayfasını okudum<br>
+  <input type="checkbox" id="pedicur" value="100"> Pedikür sayfasını okudum<br>
+  <input type="checkbox" id="hakkimizda" value="100"> Hakkımızda kısmına baktım<br>
+  <input type="checkbox" id="sss" value="100"> Sıkça sorulan sorular kısmını okudum<br>
+  <input type="checkbox" id="oje" value="100"> Oje nasıl sürülür kısmını inceledim<br><br>
+  <button type="button" onclick="biriktirKalpler()">Kalplerimi Biriktir 💖</button>
+</form>
+
+<p id="sonuc" style="margin-top:20px; font-weight:bold;"></p>
+
+<script>
+function biriktirKalpler() {
+    let toplamKalp = 0;
+    let checkboxes = document.querySelectorAll("#heartForm input[type='checkbox']");
+    checkboxes.forEach(function(box) {
+        if(box.checked) {
+            toplamKalp += Number(box.value);
+        }
+    });
+
+    let mesaj = `🎉 Biriktirdiğin kalp sayısı: ${toplamKalp} 💖<br>`;
+    mesaj += "Kalplerini daha çok biriktirmek istiyorsan, işaretlemediğin kutucukları da yap!";
+    document.getElementById("sonuc").innerHTML = mesaj;
+
+    alert(`Tebrikler! Şu anda ${toplamKalp} kalbin var 💖`);
+}
+</script>
+
+</body>
+</html>
