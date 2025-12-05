@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ornek</title>
+</head>
+<body>
+    <h2>Şifre Kontrol</h2>
+    <input type="password" id="sifre" placeholder="şifre giriniz">
+    <button onclick="kontrolEt()">Kontrol Et</button>
+    <div id="Kurallar">
+    <div class="1">-En Az 8 karakter</div>
+    <div class="2">-En Az 1 Büyük Harf</div>
+    <div class="3">-En Az 1 Küçük Harf</div>
+    <div class="4">-En Az 1 rakam</div>
+    </div>
+    <div id="sonuc"></div>
+</body>
+<script>
+    function kontrolEt()
+    {
+        let sifre=document.getElementById(`sifre`).value;
+        let sonuc=document.getElementById(`sonuc`);
+
+        const uzunluk=sifre.length>=8;
+        const buyukHarf=/[A-Z]/.test(sifre);
+        const kucukHarf=/[a-z]/.test(sifre);
+        const rakam=/\d/.test(sifre);
+
+        if(uzunluk && buyukHarf && kucukHarf && rakam)
+    {
+        sonuc.innerHTML=`<div class="gecerli">Geçerli Şifre</div>`;
+    }
+    else
+    {
+        sonuc.innerHTML=`<div class="gecersiz">Geçersiz Şifre</div>`;
+    }
+
+    }
+
+</script>
+</html>
