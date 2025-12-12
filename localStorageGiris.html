@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Not Alanı</h2>
+    <p>Kayıtlı Not: <span id="not-gosterge"></span> </p><br>
+    <button id="kaydet">Notu Kaydet</button>
+    <button id="sil">Notu Sil</button>
+
+</body>
+<script>
+    const notGosterge=document.getElementById("not-gosterge");
+    const kaydet=document.getElementById("kaydet");
+    const sil=document.getElementById("sil");
+
+    //depolama anahtarı
+    const not_key='notAlani';
+    const kaydedilecek_metin='Bugün Local Storage Öğrendim';
+
+    //durumu yükle ve göster
+    function durumuGoster(){
+        const kayitliNot=localStorage.getItem(not_key);
+        if(kayitliNot){
+            notGosterge.textContent=kayitliNot;
+            notGosterge.style.color='green';
+        }
+        else{
+            notGosterge.textContent='Henüz Kayıtlı Bir Not Yok';
+            notGosterge.style.color='red';
+        }
+    }
+
+
+
+</script>
+</html>
