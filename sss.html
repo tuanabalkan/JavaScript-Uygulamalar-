@@ -1,118 +1,280 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>SSS - Tırnak Eğitimi Platformu</title>
-  <style>
-    body {
-      background-color: #cfe0fc; /* Pastel mavi */
-      color: #1e3a8a; /* Koyu mavi */
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<title>SSS</title>
 
-    h1 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+<style>
+/* Sayfa genel ayarları */
+body{
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#e6f6ff,#fdf2f8);
+  max-width:1100px;
+  margin:auto;
+  padding:30px;
+  color:#0f172a;
+}
 
-    h2 {
-      margin-top: 30px;
-      font-size: 1.4em; /* Soruları biraz büyüttük */
-    }
+h1{
+  text-align:center;
+  color:#0284c7;
+  margin-bottom:40px;
+}
 
-    p {
-      margin-left: 15px;
-      margin-bottom: 20px;
-    }
+/* ACCORDION  */
+.accordion-item{
+  background:#fff;
+  border-radius:14px;
+  margin-bottom:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  overflow:hidden;
+}
 
-    hr {
-      border: 0;
-      height: 3px; /* Çizgi boyutu büyütüldü */
-      background-color: #1e3a8a;
-      margin: 30px 0; /* Sorular arasında boşluk */
-    }
+.accordion-header{
+  padding:18px 22px;
+  cursor:pointer;
+  font-weight:bold;
+  background:#bae6fd;
+  display:flex;
+  justify-content:space-between;
+}
 
-    .btn {
-      display: block;
-      margin: 30px auto;
-      padding: 10px 20px;
-      background-color: #1e3a8a;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-  </style>
+/* Kapalıyken + işareti */
+.accordion-header::after{
+  content:"+";
+}
+
+/* Açıkken − işareti */
+.accordion-item.active .accordion-header::after{
+  content:"−";
+}
+
+/* Açılır alan  */
+.accordion-body{
+  display:none;
+  padding:20px;
+  background:#f0f9ff;
+}
+
+/* Kayan yazı alanı */
+.kayan-yazi{
+  margin:60px 0 30px;
+  background:linear-gradient(90deg,#38bdf8,#0ea5e9);
+  color:#fff;
+  padding:14px 0;
+  border-radius:10px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.kayan-yazi span{
+  display:inline-block;
+  padding-left:100%;
+  animation:kay 14s linear infinite;
+}
+
+/* Kayan yazı animasyonu */
+@keyframes kay{
+  from{transform:translateX(0)}
+  to{transform:translateX(-100%)}
+}
+
+/* Yorum alanı */
+.yorum-alani{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+textarea{
+  width:100%;
+  min-height:90px;
+  padding:12px;
+  border-radius:10px;
+  border:2px solid #7dd3fc;
+}
+
+button{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border:none;
+  border-radius:999px;
+  background:#0ea5e9;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Tek tek yorum kutuları */
+.yorum{
+  margin-top:12px;
+  padding:14px;
+  background:#f0f9ff;
+  border-left:4px solid #38bdf8;
+  border-radius:10px;
+}
+
+/* Ana sayfaya dönüş butonu */
+.ana-don-btn{
+  display:block;
+  width:min(85%,420px);
+  margin:60px auto 20px;
+  padding:15px 25px;
+  text-align:center;
+  text-decoration:none;
+  font-size:1.05rem;
+  font-weight:600;
+  color:#fff;
+  border-radius:999px;
+  background:linear-gradient(135deg,#7dd3fc,#7dd3fc);
+  box-shadow:0 15px 35px rgba(244,114,182,.45);
+  transition:.25s;
+}
+
+.ana-don-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 22px 45px #7dd3fc;
+}
+
+.ana-don-btn:active{
+  transform:scale(.96);
+}
+</style>
 </head>
+
 <body>
 
-<h1>SSS - Sıkça Sorulan Sorular</h1>
+<h1>Sıkça Sorulan Sorular</h1>
+<a href="sayfa.html" class="ana-don-btn">Ana Ekrana Dön</a>
 
-<h2 id="soru1">1. Sitemizdeki eğitimler ücretli mi?</h2>
-<p>Hayır. Platform tamamen bağımsız ve ücretsizdir. Amacımız kullanıcıların pahalı kurslara veya sponsorlu içeriklere bağımlı kalmadan, güvenli ve doğru bilgilerle tırnak uygulamaları öğrenmesini sağlamaktır.</p>
-<hr>
+<div id="sssAccordion">
 
-<h2 id="soru2">2. Hangi tırnak uygulama yöntemlerini öğrenebilirim?</h2>
-<p>Temel manikür ve pedikürden, protez tırnak yapımına, gel türleri, nail art ve gelişmiş tekniklere kadar geniş bir içerik sunuyoruz. Ayrıca, ürün ve makine kullanımını, uygulama ve çıkarma adımlarını simülasyonlarla pratik yapabilirsiniz.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">1. Eğitimler ücretli mi?</div>
+  <div class="accordion-body">Hayır. Tüm içerikler ücretsizdir.</div>
+</div>
 
-<h2 id="soru3">3. Simülasyon modülleri nasıl çalışıyor?</h2>
-<p>Her adım için interaktif bir simülasyon bulunur. Kullanıcılar doğru uygulama yaptığında puan kazanır ve bu puanlarla ödüller açabilir. Simülasyonlar, özellikle hatasız öğrenme ve el becerisi geliştirme amacıyla tasarlanmıştır.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">2. Sertifika veriliyor mu?</div>
+  <div class="accordion-body">Bu platform eğitim ve pratik amaçlıdır, sertifika içermez.</div>
+</div>
 
-<h2 id="soru4">4. Protez tırnak uygulaması tırnağıma zarar verir mi?</h2>
-<p>Doğru uygulandığında ve bakım yapıldığında protez tırnaklar tırnağa zarar vermez. Yanlış uygulama, uzun süreli hatalı çıkarma veya hijyen ihlalleri risk oluşturabilir. Platformumuzda bu riskleri minimuma indiren adımlar detaylı olarak açıklanmıştır.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">3. Yeni başlayanlar için uygun mu?</div>
+  <div class="accordion-body">Evet. Hiç bilmeyenler için de uygundur.</div>
+</div>
 
-<h2 id="soru5">5. Hangi jel türünü ne zaman kullanmalıyım?</h2>
-<p>
-<strong>Soak-off/soft gel:</strong> Renk uygulamaları, kolay çıkarma, 2–3 hafta dayanır.<br>
-<strong>Builder gel / BIAB:</strong> Zayıf tırnakları güçlendirme, hafif uzatma, dolgu ve yapılandırma için uygundur.<br>
-<strong>Hard gel:</strong> Uzun süreli ve dayanıklı sculpting işlemleri için kullanılır; çıkarma profesyonel adım gerektirir.<br>
-<strong>Akrilik:</strong> Çok güçlü uzatma sağlar, ancak çıkarma doğal tırnağa daha fazla özen gerektirir.
-</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">4. Protez tırnak zararlı mı?</div>
+  <div class="accordion-body">Doğru ürün ve teknikle uygulandığında zararlı değildir.</div>
+</div>
 
-<h2 id="soru6">6. Simülasyonlarda kazanılan ödüller gerçek mi?</h2>
-<p>Evet, platformumuzda puanlar kullanıcı hesabına kaydedilir ve belirli seviyelere ulaşıldığında ödüller açılır. Ödüller genellikle eğitim materyali ve tırnak ürünleri gibi kullanıcıyı destekleyici ürünlerdir.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">5. Jel mi akrilik mi daha dayanıklı?</div>
+  <div class="accordion-body">Akrilik daha serttir, jel daha esnektir.</div>
+</div>
 
-<h2 id="soru7">7. Üye olmadan siteyi kullanabilir miyim?</h2>
-<p>Üye olmadan bazı içeriklere erişebilirsiniz, ancak simülasyon puanları, ödüller ve ilerleme takibi için üye olmanız gerekir. Üyelik tamamen ücretsizdir ve kişisel veriler KVKK/GDPR gibi gizlilik standartlarına uygun şekilde saklanır.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">6. Tırnaklarım kısa, yine de olur mu?</div>
+  <div class="accordion-body">Evet. Kısa tırnaklarda da uygulama yapılabilir.</div>
+</div>
 
-<h2 id="soru8">8. Uygulama sırasında ürün ete değerse ne yapmalıyım?</h2>
-<p>Ürün kürlenmeden önce ete değdi ise hemen temiz bir pamuk veya asetonsuz temizleyici ile silin. Kürlendiyse, gereksiz zorlamayın; tırnağı törpüleyerek düzeltmek veya gerekiyorsa yeniden uygulamak en güvenli yöntemdir.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">7. Simülasyonlar nasıl çalışıyor?</div>
+  <div class="accordion-body">Gerçek uygulamayı dijital ortamda simüle eder.</div>
+</div>
 
-<h2 id="soru9">9. Profesyonel uygulayıcı olmak istiyorum, bu site yeterli mi?</h2>
-<p>Platform temel ve ileri teknikleri öğretmek, simülasyonla beceri kazandırmak için tasarlanmıştır. Profesyonel seviyeye ulaşmak için uygulamalı pratik ve sertifikalı kurslar da önerilir. Ancak buradaki eğitimler güçlü bir temel oluşturur ve hatasız öğrenme sağlar.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">8. Oje taşarsa ne yapmalıyım?</div>
+  <div class="accordion-body">Aseton yardımıyla temizleyebilirsin.</div>
+</div>
 
-<h2 id="soru10">10. Sitedeki bilgiler güvenli ve güncel mi?</h2>
-<p>Evet. Tüm içerikler uluslararası standartlar, dermatoloji kılavuzları ve profesyonel nail artist uygulamaları temel alınarak hazırlanmıştır. Hijyen, sağlık ve güvenlik her zaman önceliğimizdir.</p>
-<hr>
+<div class="accordion-item">
+  <div class="accordion-header">9. Nail art öğrenebilir miyim?</div>
+  <div class="accordion-body">Evet. Temelden ileri seviyeye kadar içerik var.</div>
+</div>
 
-<button id="sssBtn" class="btn">Dilek ve önerileriniz</button>
+<div class="accordion-item">
+  <div class="accordion-header">10. Mobil cihazlarda çalışır mı?</div>
+  <div class="accordion-body">Evet. Telefon ve tablet uyumludur.</div>
+</div>
+
+</div>
+
+<!-- Kayan bilgilendirme yazısı -->
+<div class="kayan-yazi">
+  <span>💬 Dilek ve önerilerin bizim için önemli! Aşağıdan yorum bırak.</span>
+</div>
+
+<!-- Yorum alanı -->
+<div class="yorum-alani">
+  <h2>Yorum Bırak</h2>
+  <textarea id="yorumInput" placeholder="Yorumunu yaz..."></textarea>
+  <button id="yorumGonder">Gönder</button>
+  <div id="yorumListesi"></div>
+</div>
 
 <script>
-  // Hoşgeldin prompt
-  let kullaniciAdi = prompt("Adın ne güzelim?");
-  alert("Hoşgeldin " + (kullaniciAdi ? kullaniciAdi : "") + "! 💅");
 
-  // Dilek ve önerileriniz JS
-  document.getElementById("sssBtn").onclick = function() {
-    let mesaj = prompt("Dilek ve önerilerinizi yazabilirsiniz:");
-    if(mesaj){
-      alert("Teşekkürler! 💖 Öneriniz bize ulaştı.");
-      console.log("Kullanıcı önerisi:", mesaj);
-    } else {
-      alert("Tamam, teşekkürler! 💖");
-    }
+document.querySelectorAll(".accordion-header").forEach(header=>{
+  header.onclick=()=>{
+    const item = header.parentElement;        // Tüm accordion item
+    const body = header.nextElementSibling;   // Cevap kısmı
+
+    // Aktif aç/kapat
+    item.classList.toggle("active");
+
+    // Aktifse göster, değilse gizle
+    body.style.display = item.classList.contains("active")
+      ? "block"
+      : "none";
+  }
+});
+
+const input = document.getElementById("yorumInput");     // textarea
+const btn   = document.getElementById("yorumGonder");   // gönder butonu
+const liste = document.getElementById("yorumListesi");  // yorumların olduğu alan
+
+// Daha önce kaydedilmiş yorumlar
+let yorumlar = JSON.parse(localStorage.getItem("yorumlar")) || [];
+
+// Sayfa açılınca yorumları ekrana yazdır
+yorumlar.forEach(yorum => ekle(yorum));
+
+// Yorum gönderme işlemi //
+btn.onclick = () => {
+  const metin = input.value.trim();
+
+  // kısa yorum engeli
+  if(metin.length < 5){
+    alert("Biraz uzun yazınız.");
+    return;
   }
 
-  console.log("SSS sayfasını incele ve soruların üzerinden geç! 🌸");
+  // Yorum listesine ekle
+  yorumlar.push(metin);
+
+  // LocalStorage'a kaydet
+  localStorage.setItem("yorumlar", JSON.stringify(yorumlar));
+
+  // Ekrana ekle
+  ekle(metin);
+
+  // Input'u temizle
+  input.value = "";
+};
+
+// Yorumu HTML'e ekle //
+function ekle(metin){
+  const div = document.createElement("div");
+  div.className = "yorum";
+  div.textContent = metin;
+
+// Yeni yorum en üste gelsin
+  liste.prepend(div);
+}
 </script>
 
 </body>

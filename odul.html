@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+/* Genel sayfa ayarları */
+body {
+  background-color: #FFF7F1;
+  font-family: Arial, sans-serif;
+  padding: 30px;
+}
+
+h1{ color:#C96A2B; }
+
+/* Kalp bilgisi alanı */
+.kalp-alani{
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+/* Ürünlerin dizildiği grid yapı */
+.urunler {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+/* Ürün kartı */
+.urun-kart {
+  background-color: #FFE5D0;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(255, 170, 120, 0.35);
+  transition: 0.25s;
+}
+
+/* Hover efekti */
+.urun-kart:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(255, 160, 100, 0.45);
+}
+
+/* Ürün görsel alanı */
+.urun-resim {
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Görselin taşmaması için */
+.urun-resim img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Ürün adı */
+.urun-adi {
+  font-size: 16px;
+  font-weight: 600;
+  color: #C96A2B;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* Ürün fiyatı */
+.urun-kalp {
+  font-size: 14px;
+  color: #D98245;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Buton */
+button{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#FFB347;
+  cursor:pointer;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<h1>
+Kalplerinizin Önemini Şimdi Anlayacaksınız!<br>
+Aşağıdaki Ürünlerde Kalplerinizin Yetiği Kadar Alabilirsiniz!<br>
+Seç ve Onayla. Gerisini Bize Bırak!
+</h1>
+
+<!-- Mevcut kalp gösterimi -->
+<div class="kalp-alani">
+  Mevcut Kalp: <strong id="kalp">0</strong> 
+</div>
+
+<!-- Ürünlerin yükleneceği alan -->
+<div class="urunler" id="market"></div>
+
+<div id="siparis-alani" style="display:none; margin-top:40px; background:#FFE5D0; padding:20px; border-radius:20px; box-shadow:0 8px 20px rgba(255,170,120,0.35);">
+  
+  <p style="font-weight:600; color:#C96A2B;">
+    Harika seçim! Ürününüzü size ulaştırmak için mail atacağız.
+  </p>
+  <input 
+    type="email"
+    id="email-input"
+    placeholder="ornek@mail.com"
+    style="width:100%; padding:10px; border-radius:10px; border:none; margin-top:10px;"
+  >
+
+  <button onclick="mailKaydet()" style="margin-top:12px;">
+    Maili Gönder
+  </button>
+
+  <!-- Teşekkür mesajı -->
+  <p id="tesekkur" style="display:none; margin-top:10px; color:#C96A2B; font-weight:600;">
+    Bizimle olduğunuz için teşekkürler!
+  </p>
+</div>
+
+<script>
+/* HTML elemanlarını yakalama */
+const market = document.getElementById("market");
+const kalpYazi = document.getElementById("kalp");
+const siparisAlani = document.getElementById("siparis-alani");
+const emailInput = document.getElementById("email-input");
+const tesekkur = document.getElementById("tesekkur");
+
+const fiyat = 250;
+
+/* LocalStorage’dan kalp çekme, yoksa 300 ver */
+let kalp = Number(localStorage.getItem("kalp")) || 300;
+kalpYazi.textContent = kalp;
+
+/* Ürün listesi */
+const urunListesi = [
+  { ad:"Jel", resim:"222.jpg" },
+  { ad:"Gumus", resim:"gumus.jpg" },
+  { ad:"Siyah", resim:"siyah.jpg" },
+  { ad:"Bordo", resim:"bordo.jpg" },
+  { ad:"Kirmizi", resim:"kirmizi.jpg" },
+  { ad:"Sari", resim:"sari.jpg" },
+  { ad:"Yesil", resim:"yesil.jpg" },
+  { ad:"Mavi", resim:"mavi.jpg" },
+  { ad:"Pembe", resim:"pembe.jpg" }
+];
+
+/* Ürünleri ekrana yazdır*/
+function marketiYukle(){
+  let html = "";
+  urunListesi.forEach((urun, index) => {
+    html += `
+      <div class="urun-kart">
+        <div class="urun-resim">
+          <img src="${urun.resim}" alt="${urun.ad}">
+        </div>
+        <div class="urun-adi">${urun.ad}</div>
+        <div class="urun-kalp">${fiyat} kalp</div>
+        <button onclick="urunAl(${index})">Satın Al</button>
+      </div>
+    `;
+  });
+  market.innerHTML = html;
+}
+
+/* Satın alma işlemi */
+function urunAl(index){
+  if(kalp >= fiyat){
+    // Kalp düş
+    kalp -= fiyat;
+    localStorage.setItem("kalp", kalp);
+    kalpYazi.textContent = kalp;
+
+    // Mail alanını aç
+    siparisAlani.style.display = "block";
+
+    Swal.fire({
+      icon: "success",
+      title: "Satın alındı!",
+      text: urunListesi[index].ad + " sepete eklendi.",
+      confirmButtonColor: "#FFB347"
+    });
+  }else{
+    Swal.fire({
+      icon: "error",
+      title: "Yetersiz kalp",
+      text: "Kalbin yetmiyor.",
+      confirmButtonColor: "#FFB347"
+    });
+  }
+}
+
+/* Mail kaydetme */
+function mailKaydet(){
+  const mail = emailInput.value.trim();
+
+  // Geçerli mail
+  const mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(mail === ""){
+    Swal.fire({
+      icon: "warning",
+      title: "Hata",
+      text: "Mail boş olamaz.",
+      confirmButtonColor: "#FFB347"
+    });
+    return;
+  }
+
+  if(!mailRegex.test(mail)){
+    Swal.fire({
+      icon: "error",
+      title: "Geçersiz mail",
+      text: "ornek@mail.com formatında gir.",
+      confirmButtonColor: "#FFB347"
+    });
+    return;
+  }
+
+  // Maili kaydet
+  localStorage.setItem("email", mail);
+  tesekkur.style.display = "block";
+
+  Swal.fire({
+    icon: "success",
+    title: "Mail kaydedildi",
+    confirmButtonColor: "#FFB347"
+  });
+}
+
+/* Daha önce mail girildiyse alanı açık göster */
+if(localStorage.getItem("email")){
+  siparisAlani.style.display = "block";
+  tesekkur.style.display = "block";
+}
+
+/* Sayfa açılınca marketi yükle */
+marketiYukle();
+</script>
+
+</body>
+</html>

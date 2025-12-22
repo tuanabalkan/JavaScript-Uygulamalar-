@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Oje & Protez Tırnak Rehberi</title>
+
+<style>
+:root{
+  --bg:#fff7c2;
+  --card:#fffdf0;
+  --primary:#e6c200;
+  --secondary:#ffec80;
+  --text:#5c4a00;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Sayfa başlığı ve navigasyon alanı */
+header{
+  background:linear-gradient(135deg,var(--secondary),var(--primary));
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+header h1{margin:0;font-size:26px;}
+header a{
+  text-decoration:none;
+  background:#fff;
+  padding:10px 16px;
+  border-radius:30px;
+  color:var(--text);
+  font-weight:600;
+}
+
+/* Sağ üst köşedeki kalp göstergesi */
+#kalpBox{
+  background:#fff;
+  padding:10px 16px;
+  border-radius:30px;
+  font-weight:600;
+}
+
+main{
+  padding:30px;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* Bilgi bölümleriçin kart tasarımı */
+section{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:30px;
+  box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+section h2{
+  margin-top:0;
+  background:var(--secondary);
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:20px;
+}
+section p{line-height:1.7;}
+
+/* Mini oyun alanındaki tırnakların yerleşimi */
+#game{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+/* Tırnak kutucuklarının temel yapısı */
+.nail{
+  width:120px;
+  height:160px;
+  background:#f5e3c0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  cursor:pointer;
+  transition:.3s;
+}
+
+/* Tırnak Şekilleri*/
+.nail[data-shape="Badem"]{border-radius:60% 60% 40% 40%;}
+.nail[data-shape="Kare"]{border-radius:10px;}
+.nail[data-shape="Oval"]{border-radius:50% 50% 35% 35%;}
+.nail[data-shape="Stiletto"]{
+  clip-path:polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+/* Tırnakların altındaki isim etiketleri */
+.nail span{
+  background:#fff;
+  width:100%;
+  text-align:center;
+  padding:8px 0;
+  border-radius:0 0 20px 20px;
+  font-weight:600;
+}
+.nail:hover{transform:scale(1.05);} 
+.selected{outline:5px solid var(--primary);} 
+
+/* Sayfadaki genel buton tasarımı */
+button{
+  background:var(--primary);
+  border:none;
+  padding:12px 20px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:600;
+}
+button:hover{background:#d4b000;}
+
+/* Rastgele ipucu metninin stili */
+#randomTip{
+  margin-top:15px;
+  font-style:italic;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#">Ana Ekrana Dön</a>
+  <h1>Oje & Protez Tırnak Rehberi</h1>
+  <div id="kalpBox">❤Kalp: <span id="kalp">0</span></div>
+</header>
+
+<main>
+
+<section>
+<h2>Ojeye Giriş: Oje Nedir?</h2>
+<p>Oje, tırnakların üzerine sürülen ve kuruduğunda ince bir tabaka oluşturan kozmetik bir üründür. Temel amacı tırnağa renk vermek gibi görünse de aslında tırnağı dış etkenlerden korumaya da yardımcı olur.</p>
+</section>
+
+<section>
+<h2>Tırnağın Yapısı ve Görevleri</h2>
+<p>Tırnak plağı sert yüzeydir, kütikül koruyucudur, lunula üretim merkezidir. Bu bölgelere yanlış müdahale tırnağı mahveder.</p>
+</section>
+
+<section>
+<h2>Normal (Klasik) Oje</h2>
+<p>Normal oje hava ile kurur, asetonla çıkarılır ve ev kullanımı için en pratik sistemdir.</p>
+</section>
+
+<section>
+<h2>Baz Coat & Top Coat</h2>
+<p>Baz coat korur, top coat mühürler. İkisi olmadan oje eksik kalır.<br>
+Ne baz coatsız ne de top coatsız bir protez tırnak mümkündür.İkisi birbirinin<br>
+olmazsa olmazıdır.Baz coat olmadığında tırnak mantar kapabilir, jel tırnağa tutunamaz<br>
+ve kopma olur.Top coat olmadan da sürülen oje yeteri kadar parlamaz ve kalıcı olmaz.
+</p>
+</section>
+
+<section>
+<h2>Protez Tırnak & Kalıcı Oje</h2>
+<p>Protez tırnak, kendi tırnağın kısa, kırık ya da şekilsizse üstüne yapay bir tırnak ekleme işlemidir.<br>
+Jel, akrilik ya da polygel gibi malzemelerle yapılır. Amaç tırnağı uzatmak, güçlendirmek ve düzgün göstermek. <br>
+Oje daha güzel dursun diye de yapılır, yani süsün süsü. Doğru yapılırsa tırnağa zarar vermez, <br>
+yanlış yapılırsa tırnak “ben gidiyorum” der.
+</p>
+</section>
+
+<section>
+<h2>Nail Art Nedir?</h2>
+<p>
+Nail art, tırnak üzerine yapılan sanatsal süsleme işlemlerinin genel adıdır. Basit desenlerden üç boyutlu taş ve figürlere kadar geniş bir alanı kapsar. Bu iş sadece estetik değil, teknik bilgi de ister.Birkaç basit ama güzel duran nail artların nasıl yapıldığını inceleyelim: 
+  <li>French: Jelin üzerine, tırnağın bitimine yapılan, elleri zarif ve kibar gösteren uğraşılmamış bir güzelliktir.
+    <ul>Tırnağa jel veya rakı beyazı oje sürülür.</ul>
+    <ul>Tırnağın ucuna istenilen renkte yarım ay çizilir.</ul>
+ </li>
+ <li>Puantiye: Nail Art fırçalarıyla, yoksa tel toka ucuyla yapılan noktalardır.
+   <ul>Tırnağa taban rengi sürülür. Bu renk kullanıcının isteğine bağlıdır.</ul> 
+   <ul>Oje iyice kuruduktan sonra üzerine yine istenilen renkte ve istenilen<br> 
+   miktarda nokalar çizilir.</ul>
+ </li>
+ <li>Ombre: Birden fazla rengin geçişi belli olunmayacak şekilde tırnağa sürülmesidir. <br>
+ Bunun İki Yolu Vardır:
+   <ul><b>Birinci Yol:</b> ilk renk tırnağa sürülür.Ardından kaç renkle geçiş isteniyorsa sünger yardımıyla<br>
+   ilk rengin devamı olacak şekilde tampon hareketlerle uygulanır.</ul>
+   <ul><b>İkinci Yol:</b>Tırnağa koruyucu görevi görecek katman uygulanır. Ardından fırça<br>
+   yardımıyla ojeler sırayla ince bir işçilikle karıştırılarak sürülür.</ul>
+   
+ </li>
+</p>
+<p>
+Jel boya, akrilik boya, stamping plakaları, stickerlar, simler ve taşlar en sık kullanılan nail art materyalleridir. Kalıcı sistemlerde yapılan nail art UV/LED lambada kurutulur ve haftalarca bozulmaz.
+</p>
+<p>
+En büyük hata, nail artı kalın ve özensiz yapmaktır. İnce katlar, doğru ürün ve sabır olmadan temiz sonuç çıkmaz. Nail art sabırsız insanı döver.
+</p>
+</section>
+
+<section>
+<h2>Mini Oyun: Tırnak Şeklini Seç</h2>
+<p>Beğendiğin tırnak şeklini seç, bu oyunu sadece **bir kere** oynayabilirsin.</p>
+
+<div id="game">
+  <div class="nail" data-shape="Badem"><span>Badem</span></div>
+  <div class="nail" data-shape="Kare"><span>Kare</span></div>
+  <div class="nail" data-shape="Oval"><span>Oval</span></div>
+  <div class="nail" data-shape="Stiletto"><span>Stiletto</span></div>
+</div>
+
+<br>
+<button onclick="puanVer()">Seçimi Onayla</button>
+</section>
+
+<section>
+<h2>Günlük Tırnak İpucu</h2>
+<button onclick="ipucuGetir()">İpucu Göster</button>
+<div id="randomTip"></div>
+</section>
+
+</main>
+</body>
+
+<script>
+  
+/* mevcut kalp miktarını al, yoksa sıfırdan başla */
+let kalp = localStorage.getItem('kalp') ? Number(localStorage.getItem('kalp')) : 0;
+document.getElementById('kalp').textContent = kalp;
+
+/* Kullanıcının seçtiği şekli tutan değişken */
+let secilen = null;
+
+/* Oyunun daha önce tamamlanıp tamamlanmadığını kontrol et */
+let oyunBitti = localStorage.getItem('tirnakOyunBitti') === 'true';
+
+
+document.querySelectorAll('.nail').forEach(nail=>{
+  nail.addEventListener('click',()=>{
+    // Eğer oyun bittiyse tıklamaya izin verme
+    if(oyunBitti) return; 
+
+    document.querySelectorAll('.nail').forEach(n=>n.classList.remove('selected'));
+
+    nail.classList.add('selected');
+
+    secilen = nail.dataset.shape;
+  });
+});
+
+/* Kalp kazanma işlemi */
+function puanVer(){
+  // Aynı oyundan defalarca puan alınmasını engelle
+  if(oyunBitti){
+    alert('Bu oyunu zaten oynadın ');
+    return;
+  }
+  // Seçim yapmadan butona basıldıysa uyar
+  if(!secilen){
+    alert('Önce bir tırnak şekli seç');
+    return;
+  }
+
+  // 100 kalp ekle ve hem değişkende hem hafızada güncelle
+  kalp += 100;
+  localStorage.setItem('kalp',kalp);
+  localStorage.setItem('tirnakOyunBitti','true'); // Oyunun bittiğini kaydet
+
+  document.getElementById('kalp').textContent = kalp;
+  oyunBitti = true;
+
+  alert(secilen + ' seçtin! +100 kalp ❤️');
+}
+
+/* Bilgi kutusu için ipucu*/
+const ipuclari = [
+  'Ojeyi ince katlar halinde sür.',
+  'Tırnak etini kesme.',
+  'Kalıcı oje koparılmaz.',
+  'Tırnak yağı şart.',
+  'Baz kat olmadan renk sürme.'
+];
+
+/* Listeden rastgele bir ipucu seçip ekrana yazdır */
+function ipucuGetir(){
+  const rastgele = ipuclari[Math.floor(Math.random()*ipuclari.length)];
+  document.getElementById('randomTip').textContent = rastgele;
+}
+</script>
+
+
+</html>

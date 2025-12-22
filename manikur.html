@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manikür & Pedikür Detaylı Rehberi,İpuçları ve Quiz</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+
+    /* Sayfanın genel teması */
+    body.tema-seftali {
+      background: linear-gradient(135deg, #e9f7ef, #f4fff8); 
+      font-family: 'Nunito', sans-serif !important; 
+      color: #2f5d50;
+    }
+
+    /* İçeriği ortalama */
+    .container { 
+      max-width: 900px; 
+    }
+
+    /* Başlık fontları */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif !important; 
+      font-weight: 600; 
+      color: #2d6a4f; 
+      letter-spacing: 0.4px;
+    }
+
+    /* Alt başlıklar */
+    h2, h3, h4 { 
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      color: #2d6a4f; 
+    }
+
+    /* Açıklama metinleri */
+    .lead { 
+      color: #4f7f6b;
+      font-size: 1.05rem; 
+    }
+
+    /* Genel metin ayarları */
+    p, li, span, label, input, button, a, div {
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* Kalp sayacı */
+    #kalpSayaci { 
+      position: sticky;
+      top: 10px;
+      float: right; 
+      background: #d8f3dc;
+      color: #1b4332;
+      padding: 8px 14px;
+      border-radius: 20px; 
+      font-weight: 700; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    /* Ana buton stili */
+    .btn-custom {
+      background: linear-gradient(135deg, #74c69d, #52b788); 
+      color: #fff;
+      border: none;
+      border-radius: 30px; 
+      padding: 12px 28px;
+      font-weight: 800;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover efekti */
+    .btn-custom:hover { 
+      transform: translateY(-2px) scale(1.02); 
+      box-shadow: 0 10px 25px rgba(82,183,136,0.35); 
+      background: linear-gradient(135deg, #52b788, #40916c); 
+    }
+
+    /* Ana ekran butonunun konumu */
+    #anaEkranButonu { 
+      display: block; 
+      margin: 25px auto 40px; 
+      width: fit-content; 
+    }
+
+    /* Accordion kartları */
+    .accordion-item { 
+      border-radius: 18px !important; 
+      margin-bottom: 15px;
+      overflow: hidden; 
+      border: none; 
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08); 
+    }
+
+    /* Accordion başlıkları */
+    .accordion-button { 
+      background-color: #d8f3dc; 
+      color: #1b4332;
+      font-weight: 700; 
+      font-size: 0.95rem; 
+    }
+
+    /* Açık accordion başlığı */
+    .accordion-button:not(.collapsed) { 
+      background: linear-gradient(135deg, #95d5b2, #74c69d); 
+      color: #0b3d2e; 
+    }
+
+    .accordion-button:focus { 
+      box-shadow: none; 
+    }
+
+    /* Accordion içi */
+    .accordion-body { 
+      background-color: #f6fffb; 
+      line-height: 1.75; 
+      font-size: 0.95rem; 
+    }
+
+    /* Quiz alanı */
+    #quizAlani { 
+      background: #ffffff; 
+      padding: 30px; 
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    }
+
+    /* Quiz cevap kutuları */
+    .form-check { 
+      background: #f1fcf6; 
+      padding: 12px 16px; 
+      border-radius: 14px;
+      margin-bottom: 10px; 
+      transition: all 0.2s ease; 
+    }
+
+    .form-check:hover { 
+      background: #d8f3dc; 
+    }
+
+    .form-check-input:checked { 
+      background-color: #52b788; 
+      border-color: #52b788; 
+    }
+
+    /* Quiz sonuç alanı */
+    #quizSonucu { 
+      margin-top: 25px; 
+      padding: 20px; 
+      border-radius: 20px;
+      border: 2px solid transparent; 
+      display: none; 
+    }
+
+    /* Footer */
+    footer { 
+      color: #6c9a8b; 
+      font-size: 0.85rem; 
+    }
+
+    </style>
+</head>
+<body class="tema-seftali">
+
+    <div class="container">
+        <div id="kalpSayaci">❤️ Kalp: 0</div>
+        
+        <h1>Manikür & Pedikür Detaylı Rehberi</h1>
+        <p class="text-center lead">El ve ayak bakımınızı profesyonelce yapmayı öğrenin. Tırnak sağlığınızı koruyarak estetik bir görünüme kavuşun!</p>
+        
+        <a id="anaEkranButonu" href="#" class="btn btn-custom btn-lg shadow">
+            Ana Ekrana Dönmek için Tıklayınız.
+        </a>
+
+        <div class="accordion" id="bakimRehberiAccordion">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikBir">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeBir" aria-expanded="true" aria-controls="gocmeBir">
+                        1. Manikür Nedir?
+                    </button>
+                </h2>
+                <div id="gocmeBir" class="accordion-collapse collapse show" aria-labelledby="baslikBir" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <p>Manikür, sadece estetik bir işlem değil, **el ve tırnak sağlığını korumayı** amaçlayan bütünsel bir bakım sürecidir. Bu işlem, tırnakları istenen şekle sokar, çevresindeki ölü deriyi temizler ve ellerin genel görünümünü iyileştirir.</p>
+                        <p><strong>Neden Önemli?</strong> Doğru tekniklerle düzenli yapıldığında, tırnak kırılması, katmanlaşma ve kütikül (tırnak eti) problemlerini önemli ölçüde azaltır, tırnakların daha güçlü uzamasına yardımcı olur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikIki">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeIki" aria-expanded="false" aria-controls="gocmeIki">
+                        2. Manikürün Temel Amaçları
+                    </button>
+                </h2>
+                <div id="gocmeIki" class="accordion-collapse collapse" aria-labelledby="baslikIki" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <p>Manikürün ana hedefleri şunlardır:</p>
+                        <ul>
+                            <li><strong>Tırnağın Doğal Yapısını Korumak:</strong> Tırnağı zorlamadan, sağlıklı uzamasını desteklemek.</li>
+                            <li><strong>Ölü Deriyi Kontrol Altına Almak:</strong> Kütikül (tırnak eti) adı verilen ve tırnak plağının dibindeki fazla, kuru ve ölü deriyi nazikçe temizlemek.</li>
+                            <li><strong>Hijyen ve Sağlık:</strong> Tırnak altındaki kirleri temizleyerek bakteri ve mantar riskini en aza indirmek.</li>
+                            <li><strong>Oje Uygulamasına Hazırlık:</strong> Pürüzsüzleştirilmiş tırnak yüzeyi ve düzgün kütikül hattı sayesinde oje ve kalıcı ojelerin daha pürüzsüz ve uzun süre kalıcı olmasını sağlamak.</li>
+                            <li><strong>Nemlendirme:</strong> Uygulanan masaj ve kremlerle el dokusunu nemli ve genç tutmak.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikUc">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeUc" aria-expanded="false" aria-controls="gocmeUc">
+                        3. Adım Adım Profesyonel Manikür Aşamaları
+                    </button>
+                </h2>
+                <div id="gocmeUc" class="accordion-collapse collapse" aria-labelledby="baslikUc" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <p>Manikür, aşağıdaki 9 temel adımdan oluşur:</p>
+                        <ol>
+                            <li>**El Temizliği (İlk ve En Önemli Adım):** Eller mutlaka su ve sabunla yıkanır, ardından dezenfektan ile hijyen sağlanır. *(Quiz Cevabı 3 bu aşamadadır.)*</li>
+                            <li>**Tırnak Analizi:** Kırık, katmanlı, çatlak bölgeler incelenir.</li>
+                            <li>**Tırnak Kısaltma:** Tırnaklar istenen uzunluğa uygun kesilir. Tırnak batmasını önlemek için köşeleri çok derinden kesmemeye dikkat edin.</li>
+                            <li>**Törpüleme ve Şekillendirme:** Tırnak şekli belirlenir ve tırnaklar **tek yönde** törpülenerek şekil verilir. İleri geri törpülemek tırnak katmanlarına zarar verir. *(Quiz Cevabı 1 bu aşamadadır.)*</li>
+                            <li>**Kütikül Yumuşatma:** Kütikül sökücü jel veya losyon uygulanır.</li>
+                            <li>**Kütikül İşlemi:** Fazla kütikül nazikçe geriye itilir ve temizlenir.</li>
+                            <li>**Buffing (Parlatma):** Tırnak yüzeyi hafifçe pürüzsüzleştirilir.</li>
+                            <li>**Nemlendirme ve Masaj:** Nemlendirici krem sürülür ve kısa masaj yapılır.</li>
+                            <li>**İsteğe Bağlı Oje Uygulaması:** Baz, renk ve top coat uygulanır.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikDort">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeDort" aria-expanded="false" aria-controls="gocmeDort">
+                        4. Pedikür Nedir?
+                    </button>
+                </h2>
+                <div id="gocmeDort" class="accordion-collapse collapse" aria-labelledby="baslikDort" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <p>Pedikür, ayak tırnaklarını düzenlemenin yanı sıra, ayak tabanındaki sertleşmiş bölgeleri (nasırlı deriyi) yumuşatan ve **ayak hijyenini derinlemesine sağlayan** bir bakım işlemidir.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikBes">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeBes" aria-expanded="false" aria-controls="gocmeBes">
+                        5. Pedikürün Temel Amaçları
+                    </button>
+                </h2>
+                <div id="gocmeBes" class="accordion-collapse collapse" aria-labelledby="baslikBes" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <p>Pedikürün temel hedefleri şunlardır:</p>
+                        <ul>
+                            <li><strong>Ölü Deriyi Uzaklaştırmak:</strong> Sertleşmiş deriyi temizlemek.</li>
+                            <li><strong>Tırnak Batmasını Önlemek:</strong> Tırnakları doğru kesme ve törpüleme teknikleriyle batık riskini azaltmak.</li>
+                            <li><strong>Dolaşımı Artırmak:</strong> Masaj ile kan dolaşımını canlandırmak.</li>
+                            <li><strong>Ayak Sağlığını Korumak:</strong> Ayak derisini sağlıklı tutmak.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikAlti">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeAlti" aria-expanded="false" aria-controls="gocmeAlti">
+                        6. Adım Adım Profesyonel Pedikür Aşamaları
+                    </button>
+                </h2>
+                <div id="gocmeAlti" class="accordion-collapse collapse" aria-labelledby="baslikAlti" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <p>Pedikür süreci genellikle şu adımları izler:</p>
+                        <ol>
+                            <li>**Ayak Banyosu:** Ayaklar ılık suda bekletilir.</li>
+                            <li>**Tırnak Kesimi:Tırnaklar <b>düz</b> kesilmelidir. Köşeleri oval kesmek tırnak batmasına neden olabilir. (Quiz Cevabı 2 bu aşamadadır.)</li>
+                            <li>Törpüleme:Kesilen tırnakların keskin kenarları yumuşatılır.</li>
+                            <li>Kütikül Temizliği:Yumuşayan kütiküller temizlenir.</li>
+                            <li>Topuk ve Sert Bölgelerin İşlenmesi:Sertleşmiş deri temizlenir.</li>
+                            <li>Peeling (İsteğe Bağlı)</li>
+                            <li>Masaj ve Nemlendirme</li>
+                            <li>Oje veya Bakım Uygulaması</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="baslikYedi">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gocmeYedi" aria-expanded="false" aria-controls="gocmeYedi">
+                        7, 8, 9, 10. Hijyen, İpuçları, Sıklık ve Faydaları
+                    </button>
+                </h2>
+                <div id="gocmeYedi" class="accordion-collapse collapse" aria-labelledby="baslikYedi" data-bs-parent="#bakimRehberiAccordion">
+                    <div class="accordion-body">
+                        <h4>**7. Olmazsa Olmaz Hijyen ve Güvenlik Kuralları**</h4>
+                        <ul>
+                            <li>Metal aletler **mutlaka steril edilmelidir.**</li>
+                            <li>Tek kullanımlık ürünler tercih edilmeli.</li>
+                            <li>Enfeksiyon varsa **işlem yapılmamalıdır.**</li>
+                        </ul>
+                        <hr>
+                        <h4>**8. Evde Bakım İpuçları**</h4>
+                        <ul>
+                            <li>Törpülemeyi tek yönde yapın.</li>
+                            <li>Kütikülleri kesmek yerine geriye itin ve zorlamayın.</li>
+                            <li>Ayak tırnaklarını düz keserek batığı önleyin.</li>
+                        </ul>
+                        <hr>
+                        <h4>**9. Hangi Sıklıkla Yapılmalı?**</h4>
+                        <ul>
+                            <li>**Manikür:** 2–3 haftada bir tam bakım.</li>
+                            <li>**Pedikür:** 3–4 haftada bir yapılmalıdır.</li>
+                        </ul>
+                        <hr>
+                        <h4>**10. Bakımın Genel Faydaları**</h4>
+                        <ul>
+                            <li>Tırnak kırılmalarını azaltır.</li>
+                            <li>El ve ayak görünümünü iyileştirir.</li>
+                            <li>Dolaşımı artırır, ölü deriyi azaltır.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div> <div id="quizAlani" class="mt-5">
+            <h2 class="text-center">Bilgilerinizi Test Edin: Mini Quiz!</h2>
+            <p class="text-center text-secondary">Her doğru cevap size 100 ❤️ kazandırır.</p>
+
+            <div class="mb-4" id="soru1">
+                <p><strong>1. Törpüleme işlemi sırasında tırnağa zarar vermemek için tırnak hangi yönde törpülenmelidir? (Bölüm 3)</strong></p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap1" id="secenek1a" value="tek yon">
+                    <label class="form-check-label" for="secenek1a">
+                        Tek yönde
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap1" id="secenek1b" value="ileri geri">
+                    <label class="form-check-label" for="secenek1b">
+                        İleri geri hareketlerle
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap1" id="secenek1c" value="hizlica">
+                    <label class="form-check-label" for="secenek1c">
+                        Hızlı ve kuvvetli bir şekilde
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4" id="soru2">
+                <p><strong>2. Pedikürde tırnak batmasını önlemek için ayak tırnakları hangi şekilde kesilmelidir? (Bölüm 6)</strong></p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap2" id="secenek2a" value="oval">
+                    <label class="form-check-label" for="secenek2a">
+                        Oval (yuvarlak)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap2" id="secenek2b" value="duz">
+                    <label class="form-check-label" for="secenek2b">
+                        Düz
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap2" id="secenek2c" value="sivri">
+                    <label class="form-check-label" for="secenek2c">
+                        Köşeleri sivri
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4" id="soru3">
+                <p><strong>3. Manikür aşamalarındaki ilk adım nedir? (Bölüm 3)</strong></p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap3" id="secenek3a" value="tırnak kısaltma">
+                    <label class="form-check-label" for="secenek3a">
+                        Tırnak kısaltma
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap3" id="secenek3b" value="el temizliği">
+                    <label class="form-check-label" for="secenek3b">
+                        El temizliği ve dezenfeksiyon
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="cevap3" id="secenek3c" value="kütikül yumuşatma">
+                    <label class="form-check-label" for="secenek3c">
+                        Kütikül yumuşatma
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="quizKontrolEt()" class="btn btn-custom w-100" id="quizKontrolButonu">Quiz'i Tamamla ve Puanımı Gör</button>
+            
+            <div id="quizSonucu">
+                </div>
+        </div>
+        <footer class="text-center mt-5 pt-3 border-top">
+            <p>&copy; 2025 Manikür & Pedikür Rehberi. Tüm Hakları Saklıdır.</p>
+        </footer>
+
+    </div> 
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Quiz sadece bir kez çözülebilsin diye kontrol değişkeni
+    let quizCozuldu = false;
+
+    // Doğru cevaplar
+    const DOGRU_CEVAPLAR = {
+        cevap1: "tek yon",
+        cevap2: "duz",
+        cevap3: "el temizliği"
+    };
+
+    // Her doğru cevapta kazanılan kalp
+    const KALP_PUANI = 100;
+
+    // Kullanıcının mevcut kalbi
+    let mevcutKalp = 0;
+
+    // Sayfa yüklenince localStorage'tan kalbi çek
+    document.addEventListener('DOMContentLoaded', function() {
+        kalpYukle();
+    });
+
+    // Kalbi localStorage'tan okur
+    function kalpYukle() {
+        const storedKalp = localStorage.getItem('manikurKalp');
+        if (storedKalp) {
+            mevcutKalp = parseInt(storedKalp, 10);
+        }
+        document.getElementById('kalpSayaci').textContent = `Kalp: ${mevcutKalp}`;
+    }
+
+    // Kalbi localStorage'a kaydeder
+    function kalpKaydet() {
+        localStorage.setItem('manikurKalp', mevcutKalp.toString());
+    }
+
+    // Quiz kontrol fonksiyonu
+    function quizKontrolEt() {
+
+        // Daha önce çözüldüyse dur
+        if (quizCozuldu) {
+            document.getElementById('quizSonucu').innerHTML =
+            "<b>Bu quiz zaten çözüldü.</b>";
+            document.getElementById('quizSonucu').style.display = "block";
+            return;
+        }
+
+        let dogruSayisi = 0;
+        let kazanilanKalp = 0;
+        let cevaplarMetin = "";
+
+        // 3 soruyu da tek tek kontrol eder
+        for (let i = 1; i <= 3; i++) {
+            const secilen = document.querySelector(
+                `input[name="cevap${i}"]:checked`
+            );
+
+            if (secilen && secilen.value === DOGRU_CEVAPLAR[`cevap${i}`]) {
+                dogruSayisi++;
+                kazanilanKalp += KALP_PUANI;
+                cevaplarMetin += `<p>${i}. soru doğru ✅</p>`;
+            } else {
+                cevaplarMetin += `<p>${i}. soru yanlış ❌</p>`;
+            }
+        }
+
+        // Kalpleri ekle
+        mevcutKalp += kazanilanKalp;
+        kalpKaydet();
+        kalpYukle();
+
+        // Quiz tekrar çözülemesin
+        quizCozuldu = true;
+
+        // Sonucu ekrana yaz
+        const sonucDiv = document.getElementById('quizSonucu');
+        sonucDiv.innerHTML = `
+            <h3>${dogruSayisi} doğru cevap</h3>
+            <p>${kazanilanKalp} ❤️ kazandınız</p>
+            <hr>
+            ${cevaplarMetin}
+        `;
+        sonucDiv.style.display = "block";
+    }
+</script>
+
+</body>
+</html>

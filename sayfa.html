@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>TuaNails</title>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+/*  Arka plan gradyanı ve font seçimi */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fde2e4, #fbcfe8);
+  color: #6b214a;
+}
+
+.gizli { display: none; }
+
+/* Butonların genel tasarımıi */
+button {
+  background: linear-gradient(135deg, #f472b6, #ec4899);
+  border: none;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+button:hover {
+  transform: translateY(-2px) scale(1.05); /* Üzerine gelince hafif büyüme efekti */
+}
+
+/* Giriş ve kayıt formlarındaki input alanlarının tasarımı */
+input {
+  padding: 14px;
+  border-radius: 20px;
+  border: 2px solid #f9a8d4;
+  width: 100%;
+  margin-bottom: 15px;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Giriş pencerelerini ortalayan beyaz kutu tasarımı */
+.kutu {
+  max-width: 420px;
+  margin: 80px auto;
+  background: white;
+  padding: 35px;
+  border-radius: 35px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+/* Üst navigasyon menüsü  */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 50px;
+  background: rgba(255, 240, 246, 0.85); /* Hafif şeffaf pembe */
+  backdrop-filter: blur(14px); /* Arkayı bulanıklaştırma efekti */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 2px solid rgba(236,72,153,0.2);
+}
+
+/* Logo metni için gradyan renk ayarı */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  background: linear-gradient(135deg,#ec4899,#f472b6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  font-weight: 500;
+}
+
+/* Menü linkleri ve alt çizgi animasyonu */
+nav a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  padding: 8px 4px;
+  transition: 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(135deg,#ec4899,#f472b6);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%; 
+}
+
+nav a:hover {
+  color: #ec4899;
+}
+
+/* İçerik bölümlerinin genel boşlukları */
+section {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.karsilama {
+  background: white;
+  border-radius: 40px;
+  margin: 40px;
+  padding: 70px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+
+/* Kazanılan kalplerin gösterildiği alan */
+#kalpKutusu {
+  margin-top: 30px;
+  font-size: 22px;
+}
+#kalpKutusu span {
+  color:#ec4899;
+}
+
+/* Hizmetleri gösteren kartların ızgara yapısı */
+.kartlar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.kart {
+  background: white;
+  padding: 35px;
+  border-radius: 30px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.kart:hover {
+  transform: translateY(-6px);
+}
+
+footer {
+  background: #f9a8d4;
+  padding: 40px;
+  margin-top: 80px;
+}
+
+/* İletişim bilgilerini tutan tablo yapısı */
+table {
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+td {
+  padding: 10px 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="karsilamaEkrani" class="kutu">
+  <h1>Hoş Geldin!</h1>
+  <p>Hoş geldiniz!<br>Kayıtlı mısınız?</p>
+  <button onclick="girisEkraniAc()">Giriş Yap</button>
+  <button onclick="kayitEkraniAc()">Kayıt Ol</button>
+</div>
+
+<div id="girisEkrani" class="kutu gizli">
+  <h1>Giriş Yap</h1>
+  <input id="girisKullaniciAdi" placeholder="Kullanıcı Adı">
+  <input id="girisSifre" type="password" placeholder="Şifre">
+  <button onclick="girisYap()">Giriş Yap</button>
+</div>
+
+<div id="kayitEkrani" class="kutu gizli">
+  <h1>Ailemize Hoş Geldin! Hemen Kayıt Ol;</h1>
+  <input id="kayitKullaniciAdi" placeholder="Kullanıcı Adı">
+  <input id="kayitSifre" type="password" placeholder="En az 8 karakter">
+  <button onclick="kayitOl()">Kaydı Tamamla</button>
+</div>
+
+<div id="anaSayfa" class="gizli">
+
+<nav>
+  <div class="logo">TuaNails'e Hoş Geldiniz!</div>
+  <ul>
+    <li><a href="hakkimizda.html">Hakımızda</a></li>
+    <li><a href="sss.html">SSS</a></li>
+    <li><a href="oyunDeneme.html">Mini oyun/ Quiz</a></li>
+    <li><a href="mp.html">Manikür/Pedikür</a></li>
+    <li><a href="oje.html">Oje 101</a></li>
+  </ul>
+</nav>
+
+<section class="karsilama">
+  <h2>Hoş Geldiniz</h2>
+  <p>Hem eğlenip hem öğrenmeye hazır mısın?</p>
+  <p id="motivasyonSozu" style="margin-top:25px;font-style:italic;">
+  💭 Yükleniyor...
+  </p>
+  
+  <div id="kalpKutusu">
+    Kalplerin: <span id="kalpSayisi">0</span>
+  </div>
+
+  <button onclick="gunlukOdul()">🎁Günlük 200 Kalp</button>
+</section>
+
+<section>
+  <h2>Sitede Seni Neler Bekliyor?</h2>
+  <div class="kartlar">
+    <div class="kart">Mini oyunlar</div>
+    <div class="kart">Kalplerle ödül</div>
+    <div class="kart">Nail eğitimleri</div>
+  </div>
+</section>
+
+<footer>
+  <table>
+    <tr><td>📞</td><td>0543 495 57 00</td></tr>
+    <tr><td>📧</td><td>tuanabalkan2@gmail.com</td></tr>
+    <tr><td>📸</td><td>@tuanabalkaan</td></tr>
+  </table>
+</footer>
+
+</div>
+
+<script>
+  
+/* Daha önce giriş yapıldıysa direkt ana sayfayı aç*/
+window.onload = function () {
+  // Local Storage 
+  if (localStorage.getItem("girisYapildi") === "true") {
+    karsilamaEkrani.classList.add("gizli");
+    girisEkrani.classList.add("gizli");
+    kayitEkrani.classList.add("gizli");
+    anaSayfa.classList.remove("gizli");
+    kalpleriYukle(); // Kalp sayısını ekrana yazdır
+    motivasyonGetir(); // API
+  }
+};
+
+// Giriş ekranı
+function girisEkraniAc() {
+  karsilamaEkrani.classList.add("gizli");
+  girisEkrani.classList.remove("gizli");
+}
+
+// Kayıt ekranı
+function kayitEkraniAc() {
+  karsilamaEkrani.classList.add("gizli");
+  kayitEkrani.classList.remove("gizli");
+}
+
+// Kayıt olma işlemleri doğrulaması
+function kayitOl() {
+  let ad = kayitKullaniciAdi.value;
+  let sifre = kayitSifre.value;
+
+  // Kullanıcı adı sadece harf olmalı ve şifre 8 karakterden uzun olmalı
+  if (!/^[a-zA-Z0-9]+$/.test(ad) || sifre.length < 8) {
+    Swal.fire("Hata","Bilgileri kontrol et","error");
+    return;
+  }
+
+  localStorage.setItem("kullaniciAdi", ad);
+  localStorage.setItem("sifre", sifre);
+  localStorage.setItem("kalpler", 0);
+  localStorage.setItem("girisYapildi", "true"); 
+
+  kayitEkrani.classList.add("gizli");
+  anaSayfa.classList.remove("gizli");
+  kalpleriYukle();
+}
+
+// Giriş bilgileri
+function girisYap() {
+  // Girilen bilgiler LocalStorage'da var mı
+  if (
+    girisKullaniciAdi.value === localStorage.getItem("kullaniciAdi") &&
+    girisSifre.value === localStorage.getItem("sifre")
+  ) {
+    localStorage.setItem("girisYapildi", "true"); 
+    girisEkrani.classList.add("gizli");
+    anaSayfa.classList.remove("gizli");
+    kalpleriYukle();
+  } else {
+    Swal.fire("Hata","Giriş bilgileri yanlış","error");
+  }
+}
+
+// kalp miktarını ekrana yazdı
+function kalpleriYukle() {
+  kalpSayisi.innerText = localStorage.getItem("kalpler") || 0;
+}
+
+// Günde sadece bir kez 200 kalp ver
+function gunlukOdul() {
+  let bugun = new Date().toDateString();
+  // Bugün ödül alınmış mı kontrol et
+  if (localStorage.getItem("sonOdul") === bugun) {
+    Swal.fire("Dur !","Bugün aldın","info");
+    return;
+  }
+
+  // Mevcut kalplerin üzerine 200 ekle ve kaydet
+  let k = Number(localStorage.getItem("kalpler")) || 0;
+  k += 200;
+  localStorage.setItem("kalpler", k);
+  localStorage.setItem("sonOdul", bugun);
+  kalpSayisi.innerText = k;
+
+  Swal.fire("Yaşasın!","+200 kalp","success");
+}
+
+//  API 
+function motivasyonGetir(){
+  fetch("https://api.quotable.io/random")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("motivasyonSozu").innerText =
+        "💭 " + data.content;
+    })
+    .catch(() => {
+      // API hata verirse yedek bir mesaj göster
+      document.getElementById("motivasyonSozu").innerText =
+        "Bugün Tüm Oyunları Dorğu Yapmaya Gelmiş Görünüyorsun! Bu Bonus Sana;";
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Oyun & Quiz Alanı</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+/* Sayfa genel stili */
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#ffd6d6,#ff9aa2);
+  color:#6b0000;
+}
+
+/* Ana container */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:30px;
+}
+
+/* Kart tasarımı */
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:35px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* Genel buton stili */
+button{
+  background:#e63946;
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  margin:5px;
+}
+button:hover{opacity:.85}
+
+/* Başlıklar */
+h1,h2{text-align:center}
+
+/* Kalp barı */
+.kalpBar{
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+/* Tablo */
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+td,th{
+  border:1px solid #ffb3b3;
+  padding:12px;
+  vertical-align:top;
+}
+th{background:#ffd6d6}
+
+/* Progress bar */
+.progress{
+  background:#ffd6d6;
+  border-radius:20px;
+  overflow:hidden;
+}
+.progress div{
+  height:18px;
+  width:0%;
+  background:#e63946;
+  transition:.3s;
+}
+
+/* Ortalama sınıfı */
+.center{text-align:center}
+
+/* Oje alanı */
+#nail{
+  width:300px;
+  height:400px;
+  margin:20px auto;
+  background:#fff0f0;
+  border-radius:150px 150px 80px 80px;
+  border:3px solid #ff6f6f;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Boya noktası */
+.paint{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  position:absolute;
+}
+
+/* Palet butonları */
+.palette button{margin:4px}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- Ana sayfaya dönüş butonu -->
+<button onclick="alert('Ana sayfa linkini sen bağlayacaksın')">Ana Sayfaya Dön</button>
+
+<!-- Kalp göstergesi -->
+<div class="kalpBar">
+Toplam Kalp: <span id="kalp">0</span>
+</div>
+
+<div class="card">
+<h2>Kullanıcı Deneyimi ve Motivasyon Sistemi</h2>
+
+<p>
+Platformumuz, kullanıcıların öğrenme motivasyonunu artırmak, deneyimlerini zenginleştirmek ve interaktif katılımı teşvik etmek amacıyla tasarlanmış bir ödül birimi olan Kalp sistemini benimsemektedir. Kalpler, kullanıcılarımızın sitelerindeki ilerlemelerinin ve aktif katılımlarının somut bir göstergesi olarak işlev görmektedir.
+</p>
+
+<p>
+<b>Kazanım Yöntemleri:</b> Kalpler, kullanıcıların eğitim içerikleriyle etkileşimini derinleştiren çeşitli oyunlar ve bilgi yarışmaları (quizler) aracılığıyla kazanılmaktadır.
+</p>
+
+<p>
+<b>İşlevi:</b> Kazanılan Kalpler, kullanıcıların deneyim puanı olarak değerlendirilmekte ve minik hediyeler kazanmalarını sağlamaktadır.
+</p>
+
+<p>
+<b>Dağıtım:</b> Kullanıcılara günlük 200 Kalp ve dönemsel Bonus Kalp verilmektedir.
+</p>
+
+<p class="center">Bu metin açıklayıcı mıydı?</p>
+<div class="center">
+<button onclick="feedback(true)">Evet</button>
+<button onclick="feedback(false)">Hayır</button>
+</div>
+</div>
+
+<div class="card">
+<h2>Mini Oyun 1 – Bilgi Sorusu (100 Kalp)</h2>
+
+<table>
+<tr><th>Terim</th><th>Açıklama</th></tr>
+
+<tr>
+<td>Oje (Sıradan/Normal)</td>
+<td>
+Hava ile kuruyan standart sıvı tırnak boyası.
+Hızlı renk değişimi, kısa süreli (birkaç günlük) kullanım ve evde uygulama için.
+</td>
+</tr>
+
+<tr>
+<td>Jel (Kalıcı Oje / Jel Tırnak Malzemesi)</td>
+<td>
+UV veya LED ışık altında sertleşen özel reçine bazlı polimer.
+Rengi 2–3 hafta korur, dayanıklılık ve parlaklık sağlar.
+</td>
+</tr>
+
+<tr>
+<td>Tips</td>
+<td>
+Tırnağın ucuna yapıştırılan, önceden şekillendirilmiş plastik parça.
+Jel veya akrilik ile sabitlenir.
+</td>
+</tr>
+
+<tr>
+<td>Şablon</td>
+<td>
+Tırnağın altına yerleştirilen form.
+Daha doğal uzatma sağlar.
+</td>
+</tr>
+</table>
+
+<p><b>Soru:</b> Jel malzemenin en temel avantajı nedir?</p>
+
+<button onclick="oyun1Cevap(false)">Sadece renk vermesi</button><br>
+<button onclick="oyun1Cevap(true)">Uzun süreli dayanıklılık sağlaması</button><br>
+<button onclick="oyun1Cevap(false)">Günlük kullanım için olması</button>
+
+<p id="oyun1Sonuc"></p>
+</div>
+
+<div class="card">
+<h2>Mini Oyun 2 – Doğru / Yanlış</h2>
+<p>5 Soru – Her soru <b>50 Kalp</b></p>
+
+<div id="quiz2"></div>
+
+<p>Tamamlama</p>
+<div class="progress"><div id="prog"></div></div>
+</div>
+
+<div class="card">
+<h2>Mini Oyun 3 – Oje Sürme</h2>
+<p>Her tamamlanan oyun: <b>100 Kalp</b></p>
+
+<div class="center palette">
+<button onclick="renkSec('red')">Kırmızı</button>
+<button onclick="renkSec('pink')">Pembe</button>
+<button onclick="renkSec('purple')">Mor</button>
+</div>
+
+<div id="nail"></div>
+
+<div class="center">
+<button onclick="basla()">Oyunu Başlat</button>
+<button onclick="bitir()">Bitir</button>
+</div>
+</div>
+
+</div>
+
+<script>
+// Kalp verisini localStorage'dan al
+let kalp = Number(localStorage.getItem("kalp")) || 0;
+
+// Feedback daha önce verildi mi
+let feedbackDone = localStorage.getItem("feedback");
+
+// Oyun1 tamamlandı mı
+let oyun1Done = localStorage.getItem("oyun1");
+
+// Kalp güncelleme
+function guncelle(){
+  document.getElementById("kalp").innerText = kalp;
+  localStorage.setItem("kalp",kalp);
+}
+guncelle();
+
+// Feedback sistemi
+function feedback(evet){
+  if(feedbackDone) return;
+  kalp += 200;
+  feedbackDone = true;
+  localStorage.setItem("feedback",true);
+  guncelle();
+
+  Swal.fire(evet ? "Anlatabildiğimize sevindik. Devam edelim." : "Teşekkürler, önerini dikkate alacağız.");
+}
+
+// oyun1 cevap kontrolü
+function oyun1Cevap(dogru){
+  if(oyun1Done){
+    document.getElementById("oyun1Sonuc").innerText =
+    "Bu oyunu zaten tamamladın.";
+    return;
+  }
+
+  if(dogru){
+    kalp += 100;
+    oyun1Done = true;
+    localStorage.setItem("oyun1",true);
+    document.getElementById("oyun1Sonuc").innerText =
+    "Doğru! 100 Kalp kazandın.";
+    guncelle();
+  }else{
+    document.getElementById("oyun1Sonuc").innerText =
+    "Yanlış cevap.";
+  }
+}
+
+// OYUN2 //
+const sorular = [
+  ["Manikür el bakımını kapsar.", true],
+  ["Pedikür sadece oje sürmektir.", false],
+  ["Pedikür ayak sağlığını destekler.", true],
+  ["Manikür tırnak etlerini içermez.", false],
+  ["Pedikür batık riskini azaltabilir.", true]
+];
+
+let quizIndex = 0;
+
+// Quiz gösterimi
+function quizGoster(){
+  if(quizIndex >= sorular.length){
+    document.getElementById("quiz2").innerHTML =
+    "<b>Quiz tamamlandı </b>";
+    return;
+  }
+
+  document.getElementById("quiz2").innerHTML = `
+    <p>${sorular[quizIndex][0]}</p>
+    <button onclick="quizCevap(true)">Doğru</button>
+    <button onclick="quizCevap(false)">Yanlış</button>
+  `;
+}
+
+// Quiz cevap kontrolü
+function quizCevap(secim){
+  if(secim === sorular[quizIndex][1]){
+    kalp += 50;
+  }
+  quizIndex++;
+  document.getElementById("prog").style.width = (quizIndex*20)+"%";
+  guncelle();
+  quizGoster();
+}
+quizGoster();
+
+// OYUN 3 //
+let started=false;
+let renk="red";
+const nail=document.getElementById("nail");
+
+// Mouse ile boyama
+nail.addEventListener("mousemove",e=>{
+  if(!started) return;
+  let d=document.createElement("div");
+  d.className="paint";
+  d.style.background=renk;
+  d.style.left=e.offsetX+"px";
+  d.style.top=e.offsetY+"px";
+  nail.appendChild(d);
+});
+
+// Renk seçimi
+function renkSec(r){renk=r;}
+
+function basla(){started=true; nail.innerHTML="";}
+
+function bitir(){
+  if(!started) return;
+  started=false;
+  kalp += 100;
+  guncelle();
+
+  // SweetAlert EKSTRA
+  Swal.fire("Oyun tamamlandı! 100 Kalp kazandın.");
+}
+</script>
+
+</body>
+</html>
